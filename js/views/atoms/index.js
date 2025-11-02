@@ -59,7 +59,7 @@ export const Form = (method = 'GET') => {
 
 export const Label = (title, id, className = 'mr-4') => {
     const element = document.createElement('label')
-    element.for = id
+    element.htmlFor = id
     element.innerText = title
     element.className = className
     return element   
@@ -68,14 +68,17 @@ export const Label = (title, id, className = 'mr-4') => {
 export const Input = (name, placeholder, type='text', value= '', className = 'border rounded p-1 m-1') =>{
     const element = document.createElement('input')
     element.type = type
+    element.id = name
     element.name = name
     element.placeholder = placeholder
     element.value = value
     element.className = className
+    element.autocomplete = true // maybe
+    element.required = true // midlertidig
     return element
 }
 
-export const Button = (title, type='submit') => {
+export const Button = (title, type='submit', className) => {
     const element = document.createElement('button')
     element.type = type
     element.textContent = title

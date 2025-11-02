@@ -1,3 +1,4 @@
+import { addToCart } from '../models/cartModel.js';
 import { getDetails, getList } from "../models/productModel.js";
 import { Div } from '../views/atoms/index.js';
 import { ProductDetailsView, ProductListView } from "../views/organisms/productViews.js";
@@ -39,9 +40,32 @@ export const productDetails = async (product) => {
     
 
     const html = ProductDetailsView(data)
+
+    const form = html.querySelector('form')
+
+    form.addEventListener('submit', (e) => {
+        handleAddToCart(e)
+        
+    })
+
     const layout = Layout('Produkt', html)
 
     return layout
+}
+
+export const handleAddToCart = async (e) => {
+    e.preventDefault()
+    const form = e.currentTarget
+
+    const productId = form.productId.value
+    const quantity = form.quantity.value
+
+    if(quantity && productId){
+        const data = await addToCart(productId, quantity)
+        console.log(data);
+        
+    }
+    
 }
 
 export const ProductList = async () => {

@@ -1,5 +1,5 @@
 import { price2Dkk } from '../../utils/index.js';
-import { Div, Fragment, Heading, Image, Link, Paragraph } from "../atoms/index.js"
+import { Button, Div, Form, Fragment, Heading, Image, Input, Link, Paragraph } from "../atoms/index.js"
 
 export const ProductListView = (products) => {
     const element = Fragment()
@@ -8,18 +8,18 @@ export const ProductListView = (products) => {
         const { imageUrl, name, price, slug, stockText, stockClass, teaser } = product
         
         const enter = Link(`?product=${slug}`, '', 'block w-full h-full')
-        const div = Div('border flex justify-between m-10 shadow-lg')       
-        const img = Image(`http://localhost:4000${imageUrl}`, name, 'max-w-[200px]')
+        const div = Div('border flex m-10 shadow-lg hover:shadow-2xl rounded-xl p-4 max-sm:m-2')
+        const img = Image(`http://localhost:4000${imageUrl}`, name, 'max-w-[200px] max-h-[200px] overflow-hidden max-sm:w-[100px]')
         div.append(img)
 
-        const info = Div()
+        const info = Div('p-4 ml-4')
         const h2 = Heading(name, 2)
         const p = Paragraph()
         p.innerHTML = teaser
         info.append(h2, p)
         div.append(info)
 
-        const cost = Div('text-right border w-1/6 p-4')
+        const cost = Div('text-right p-4 ml-auto')
         cost.innerText = price2Dkk(price)
 
         const stockElm = Paragraph(stockClass)
@@ -50,6 +50,16 @@ export const ProductDetailsView = (product) => {
     const p = Paragraph('mt-4')
     p.innerHTML = description
     div1.append(p)
+    
+    const form = Form('POST')
+    const productId = Input('productId', '', 'hidden', id)
+    const quantity = Input('quantity', '', 'number', 1)
+    const button = Button('Læg i kurv', 'submit')
+
+    form.append(productId, quantity, button)
+    div1.append(form)
+
+    
 
     const priceSection = Paragraph('text-2xl font-bold mt-4 text-right')
     priceSection.innerHTML = price2Dkk(price)
