@@ -3,17 +3,17 @@ import { Button, Form, Paragraph } from '../atoms/index.js'
 import { FormGroup } from '../molecules/index.js'
 
 export const LoginFormView = () => {
-    const form = Form('POST')
-      const username = FormGroup('Brugernavn', 'username', 'Indtast dit brugernavn', 'text')
-      const password = FormGroup('Adgangskode', 'password', 'Indtast dit password', 'password')
-      const button = Button ('Send', 'submit', 'bg-green-500 text-white p-2 rounded hover:bg-green-700')
+    const form = Form('POST', 'p-8')
+      const username = FormGroup('Brugernavn:', 'username', 'Indtast dit brugernavn', 'text')
+      const password = FormGroup('Adgangskode:', 'password', 'Indtast dit password', 'password')
+      const button = Button ('Log Ind', 'submit', 'bg-green-500 text-white p-2 rounded hover:bg-green-700')
       form.append(username, password, button)
       return form
 }
 
 
 export const userInfoView = (user) => {
-  const element = Paragraph('flex flex-col')
+  const element = Paragraph('flex flex-col p-10 gap-4')
   element.innerText = `Velkommen ${user.firstname} ${user.lastname}!`
   const button = Button('Log ud', 'button', 'bg-red-500 flex text-white w-20 rounded p-2')
   button.addEventListener('click', () => {

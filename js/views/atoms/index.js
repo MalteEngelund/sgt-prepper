@@ -51,9 +51,10 @@ export const Image = (src, title, className = '') => {
     return element
 }
 
-export const Form = (method = 'GET') => {
+export const Form = (method = 'GET', className) => {
     const element = document.createElement('form')
     element.method = method
+    element.className = className
     return element
 }
 
