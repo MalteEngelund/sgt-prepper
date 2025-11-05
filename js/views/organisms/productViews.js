@@ -39,7 +39,7 @@ export const ProductListView = (products) => {
 export const ProductDetailsView = (product) => {
     const { id, name, imageUrl, description, price} = product
     
-    const element = Div('flex gap-8 m-4 px-8 py-16 bg-sky-50 rounded-[20px] shadow-lg max-sm:flex-col')
+    const element = Div('flex gap-8 m-4 px-8 py-16 bg-sky-50 rounded-[20px] shadow-lg max-md:flex-col max-md:items-center')
     const img = Image(`http://localhost:4000${imageUrl}`, name, 'max-w-[300px] max-h-[300px] rounded-[10px]')
     element.append(img)
 
@@ -55,14 +55,14 @@ export const ProductDetailsView = (product) => {
     form.className = 'flex gap-8 my-4 justify-end'
     const productId = Input('productId', '', 'hidden', id)
     const quantity = Input('quantity', '', 'number', 1, 'p-2 border text-center w-[64px]')
-    const button = Button('Læg i kurv', 'submit', 'p-2 text-white bg-green-500 hover-bg-green-700 rounded')
+    const button = Button('Læg i kurv', 'submit', 'p-2 text-white bg-green-500 hover:bg-green-700 rounded')
 
     form.append(productId, quantity, button)
     div1.append(form)
 
     
 
-    const priceSection = Paragraph('text-2xl font-bold mt-4 text-right')
+    const priceSection = Paragraph('text-2xl font-bold mt-4 text-right underline decoration-solid')
     priceSection.innerHTML = price2Dkk(price)
     div1.append(priceSection)
 

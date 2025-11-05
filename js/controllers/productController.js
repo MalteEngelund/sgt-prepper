@@ -40,6 +40,7 @@ export const productDetails = async (product) => {
     
 
     const html = ProductDetailsView(data)
+    
 
     const form = html.querySelector('form')
 
@@ -62,7 +63,7 @@ export const handleAddToCart = async (e) => {
 
     if(quantity && productId){
         const data = await addToCart(productId, quantity)
-        console.log(data);
+        console.log(data, 'product added to cart!');
         
     }
     

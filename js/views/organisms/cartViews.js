@@ -1,5 +1,5 @@
 import { price2Dkk } from '../../utils/index.js'
-import { Div, Li, Ul } from '../atoms/index.js'
+import { Button, Div, Li, Ul } from '../atoms/index.js'
 
 export const cartListView = (data = []) => {
   const element = Ul()
@@ -20,7 +20,9 @@ export const cartListView = (data = []) => {
     li.append(price)
 
     const action = Div('w-[10%] text-right')
-    action.innerText = 'Slet'
+    const delBtn = Button('Slet', 'button', 'p-2 text-white bg-red-500 hover:bg-red-700 rounded')
+    delBtn.dataset.cartid = item.id
+    action.append(delBtn)
     li.append(action)
 
     element.append(li)
@@ -45,13 +47,13 @@ export const cartListHeaderView = arrColumns => {
 export const cartTotalView = totalPrice => {
     const totalRow = Div('flex gap-3 border-b border-t mt-4 py-1 justify-between')
 
-    const textCol = Div('w-[65%] text-bold')
+    const textCol = Div('w-[65%] text-bold ')
     textCol.innerText = 'Total'
 
     const totalCol = Div('w-[25%] text-right font-bold')
     totalCol.innerText = price2Dkk(totalPrice)
 
-    const spacerCol = Div('w-[10%]')
+    const spacerCol = Div('w-[10%] ')
 
     totalRow.append(textCol, totalCol, spacerCol)
 

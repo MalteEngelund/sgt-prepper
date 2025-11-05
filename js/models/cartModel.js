@@ -39,3 +39,20 @@ export const addToCart = async (productId, quantity) => {
     
   }
 }
+
+
+/**
+ * 
+ * @param {Number} id 
+ */
+export const removeFromCart = async id => {
+  try {
+    const data = await request(`${url}/${id}`, 'DELETE')
+    if(data.message) {
+      location.reload()
+    }
+  } catch (error) {
+    console.error(error);
+    
+  }
+}

@@ -1,3 +1,4 @@
+import { cookieBanner } from '../../controllers/cookieBannerController.js'
 import { Div, Heading, Image, Input, Label, Li, Link, Paragraph, Ul } from "../atoms/index.js"
 
 export const HeaderView = () => {
@@ -17,8 +18,8 @@ export const HeaderView = () => {
 
     const p = Paragraph('flex gap-8 mt-auto mb-auto align-center')
     const a = Link('/index.htm#/login', 'Login', 'text-white p-2 align-middle bg-green-600 rounded hover:bg-green-700')
-    const cart = Paragraph('flex bg-slate-500 text-white p-2 rounded')
-    const cartLink = Link('/Index.htm#/cart', 'Se kurv')
+    const cart = Paragraph('flex ')
+    const cartLink = Link('/Index.htm#/cart', 'Se kurv', 'bg-slate-500 hover:bg-slate-400 text-white p-2 rounded')
     cart.append(cartLink)
     p.append(a, cart)
     div.append(logoTitle, p)
@@ -37,17 +38,20 @@ export const HeaderView = () => {
 export const NavBarView = arrNavItems => {
     const element = document.createElement('nav')
     element.className = 'bg-sky-950'
-    const ul = Ul('flex justify-between ml-4 mr-4 max-sm:flex-col')
+    const ul = Ul('flex justify-between ml-4 mr-4 max-md:flex-col ')
 
     arrNavItems.forEach(item => {
         const { url, title, slug } = item // Destructure assignment - udskiller egenskaber fra objekt
         
-        const li = Li('flex')
+        const li = Li('block')
         const img = Image(`./images/icons/${slug}.svg`, 'nav-icon', 'w-6 h-6 mr-4 mt-auto mb-auto')
-        const item1 = Link(url, title, 'flex flex-row-reverse p-4 text-white')
-        item1.append(img)
+        const item1 = Link(url,'', 'flex p-4 text-white')
+        const testP = Paragraph('')
+        testP.innerText = title
+
+        item1.append(img, testP)
         li.append(item1)
-        ul.append(li)
+        ul.append(li) // det er noget rod men det virker :S
     })
 
     element.append(ul)
@@ -59,6 +63,7 @@ export const MainView = (title, content) => {
     element.className = "p-4 min-h-60"
     const h1 = Heading(title, '1', 'px-10')
     element.append(h1, content)
+    element.append(cookieBanner())
     return element
 }
 
