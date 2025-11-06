@@ -10,7 +10,7 @@ export const CartPage = async () => {
     return false
   }
 
-  const data = await getCartList()
+  const data = await getCartList() 
   
 
   const arrHeaderColumns = [

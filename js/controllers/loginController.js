@@ -1,5 +1,5 @@
 import { Authenticate } from '../models/loginModel.js'
-import { deleteSessionItem, getSessionItem, getToken, setSessionItem, setToken } from '../services/auth.js'
+import { deleteSessionItem, /*getSessionItem, */ getToken,/* setSessionItem,*/ setToken } from '../services/auth.js'
 import { Button, Div, Form } from '../views/atoms/index.js'
 import { FormGroup } from '../views/molecules/index.js'
 import { LoginFormView, userInfoView } from '../views/organisms/loginView.js'

@@ -1,4 +1,4 @@
-import { clearToken, deleteSessionItem } from '../../services/auth.js'
+import { clearToken, /*deleteSessionItem*/ } from '../../services/auth.js'
 import { Button, Form, Paragraph } from '../atoms/index.js'
 import { FormGroup } from '../molecules/index.js'
 

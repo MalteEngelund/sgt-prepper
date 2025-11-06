@@ -7,3 +7,5 @@ export const HomePage = async () => {
     p.innerText = "Velkommen til Sgt. Prepper webshop"
     return await Layout(title, p)
 }
+
+    

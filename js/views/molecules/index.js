@@ -1,14 +1,14 @@
 import { cookieBanner } from '../../controllers/cookieBannerController.js'
-import { Div, Heading, Image, Input, Label, Li, Link, Paragraph, Ul } from "../atoms/index.js"
+import { setCookie } from '../../services/auth.js'
+import { Button, Div, Heading, Image, Input, Label, Li, Link, Paragraph, Ul } from "../atoms/index.js"
 
 export const HeaderView = () => {
     const element = document.createElement('header')
+    const indexLink = Link('/index.htm')
     const img = Image('./images/Sgt.PrepperHeader.png', 'Sgt. Prepper Logo', 'h-[65vh] overflow-hidden w-[100%] object-cover')
-    element.append(img)
+    indexLink.append(img)
+    element.append(indexLink)
     element.className = ''
-    /* const h1 = Heading('Sgt. Prepper')
-    h1.className = 'bg-slate-700 p-8 text-white'
-    element.append(h1) */
 
     const div = Div('flex justify-between bg-slate-700 py-2 px-6 align-middle')
     const logoTitle = Div('flex gap-8')
@@ -20,6 +20,8 @@ export const HeaderView = () => {
     const a = Link('/index.htm#/login', 'Login', 'text-white p-2 align-middle bg-green-600 rounded hover:bg-green-700')
     const cart = Paragraph('flex ')
     const cartLink = Link('/Index.htm#/cart', 'Se kurv', 'bg-slate-500 hover:bg-slate-400 text-white p-2 rounded')
+    
+
     cart.append(cartLink)
     p.append(a, cart)
     div.append(logoTitle, p)
@@ -27,11 +29,6 @@ export const HeaderView = () => {
     
     element.append(div)
 
-
-   /*  const p = Paragraph()
-    const a = Link('/index.htm#/login', 'Login', '')
-    p.append(a)
-    element.append(p) */
     return element
 }
 
@@ -45,7 +42,7 @@ export const NavBarView = arrNavItems => {
         
         const li = Li('block')
         const img = Image(`./images/icons/${slug}.svg`, 'nav-icon', 'w-6 h-6 mr-4 mt-auto mb-auto')
-        const item1 = Link(url,'', 'flex p-4 text-white')
+        const item1 = Link(url,'', 'flex p-4 text-white hover:bg-sky-800')
         const testP = Paragraph('')
         testP.innerText = title
 
@@ -81,3 +78,17 @@ export const FormGroup = (title, name, placeholder, type, value) => {
     element.append(label, input)
     return element
 }
+
+export function darkMode() {
+      
+    let element = document.body;
+    element.classList.toggle("dark");
+
+    if (element.classList.contains("dark:")) {
+    setCookie("darkMode", "enabled", 30);
+    } else {
+    setCookie("darkMode", "disabled", 30);
+  }
+}
+
+
