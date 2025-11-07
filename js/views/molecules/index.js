@@ -35,14 +35,14 @@ export const HeaderView = () => {
 export const NavBarView = arrNavItems => {
     const element = document.createElement('nav')
     element.className = 'bg-sky-950'
-    const ul = Ul('flex justify-between ml-4 mr-4 max-md:flex-col ')
+    const ul = Ul('flex justify-between ml-4 mr-4 max-lg:flex-col max-lg:m-0')
 
     arrNavItems.forEach(item => {
         const { url, title, slug } = item // Destructure assignment - udskiller egenskaber fra objekt
         
         const li = Li('block')
         const img = Image(`./images/icons/${slug}.svg`, 'nav-icon', 'w-6 h-6 mr-4 mt-auto mb-auto')
-        const item1 = Link(url,'', 'flex p-4 text-white hover:bg-sky-800')
+        const item1 = Link(url,'', 'flex p-4 text-white hover:bg-sky-800 rounded-[10px]')
         const testP = Paragraph('')
         testP.innerText = title
 
@@ -79,16 +79,6 @@ export const FormGroup = (title, name, placeholder, type, value) => {
     return element
 }
 
-export function darkMode() {
-      
-    let element = document.body;
-    element.classList.toggle("dark");
 
-    if (element.classList.contains("dark:")) {
-    setCookie("darkMode", "enabled", 30);
-    } else {
-    setCookie("darkMode", "disabled", 30);
-  }
-}
 
 

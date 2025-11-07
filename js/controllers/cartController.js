@@ -24,7 +24,7 @@ export const CartPage = async () => {
     return sum + (item?.product?.price * item?.quantity || 0)
   }, 0)
 
-  const html = Div()
+  const html = Div('mx-10 max-md:m-0')
   html.append(cartListHeaderView(arrHeaderColumns))
   html.append(cartListView(data))
   html.append(cartTotalView(totalPrice))
